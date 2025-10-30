@@ -1,0 +1,7 @@
+faiss-cpu
+nomic
+beautifulsoup4
+tqdm
+numpy
+requests
+

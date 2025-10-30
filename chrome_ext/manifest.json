@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Supply Chain Risk Monitor (Local RAG)",
+  "version": "1.0.0",
+  "description": "Local, private RAG to surface internal supplier risks while reading external news.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Risk Monitor"
+  },
+  "background": {
+    "service_worker": "AGENT.js",
+    "type": "module"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["PERCEPTION.js"],
+    "run_at": "document_idle"
+  }],
+  "web_accessible_resources": [{
+    "resources": ["bundle/*"],
+    "matches": ["<all_urls>"]
+  }]
+}
+

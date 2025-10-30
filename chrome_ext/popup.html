@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Risk Monitor</title>
+  <style>
+    body {
+      font: 14px system-ui, -apple-system, sans-serif;
+      padding: 16px;
+      max-width: 420px;
+      min-width: 360px;
+      margin: 0;
+      background: #f8f9fa;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0 0 12px 0;
+      color: #202124;
+    }
+    .search-box {
+      margin-bottom: 12px;
+    }
+    #q {
+      width: calc(100% - 16px);
+      padding: 8px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    #go {
+      width: 100%;
+      padding: 10px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    #go:hover {
+      background: #1765cc;
+    }
+    #go:disabled {
+      background: #dadce0;
+      cursor: not-allowed;
+    }
+    #status {
+      font-size: 13px;
+      color: #5f6368;
+      margin: 8px 0;
+      min-height: 20px;
+    }
+    .card {
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .priority {
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .priority.critical {
+      background: #fce8e6;
+      color: #c5221f;
+    }
+    .priority.normal {
+      background: #e8f5e9;
+      color: #137333;
+    }
+    .meta {
+      font-size: 13px;
+      color: #5f6368;
+      margin-bottom: 12px;
+    }
+    .meta strong {
+      color: #202124;
+    }
+    .section {
+      margin-top: 16px;
+    }
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #202124;
+      font-size: 14px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border: 1px solid #dadce0;
+      border-radius: 16px;
+      margin: 2px 4px 2px 0;
+      font-size: 12px;
+      background: white;
+    }
+    .tag-count {
+      color: #5f6368;
+      font-weight: 600;
+    }
+    .evidence-item {
+      margin: 8px 0;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .evidence-item a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .evidence-item a:hover {
+      text-decoration: underline;
+    }
+    .snippet {
+      color: #5f6368;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 32px 16px;
+      color: #5f6368;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Supply Chain Risk Monitor</h1>
+  
+  <div class="search-box">
+    <input 
+      id="q" 
+      type="text"
+      placeholder="Optional: refine query (supplier, risk keyword…)" 
+      autocomplete="off">
+    <button id="go">Analyze Current Page</button>
+  </div>
+  
+  <div id="status"></div>
+  <div id="result"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
+

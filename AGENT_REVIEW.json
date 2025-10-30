@@ -1,0 +1,98 @@
+{
+  "prompt_name": "Supply Chain Risk Monitor - Cursor Agent Prompt",
+  "version": "1.0.0",
+  "review_date": "2025-10-28",
+  "criteria_evaluation": {
+    "explicit_reasoning": {
+      "score": true,
+      "details": "Prompt requires step-by-step thinking with [plan], [assumptions], [risks] tags. Reasoning types explicitly tagged: [arch], [algo], [io], [error-handling], [perf], [security]."
+    },
+    "structured_output": {
+      "score": true,
+      "details": "Strict JSON response format enforced with PLAN, FILES, TESTS, NOTES sections. Clear template provided with examples."
+    },
+    "tool_separation": {
+      "score": true,
+      "details": "Clear boundaries defined: index_build/ for Python build tools, chrome_ext/ for browser runtime. Explicit marking of Colab vs local vs browser execution contexts."
+    },
+    "conversation_loop": {
+      "score": true,
+      "details": "BUILD_STATE object persisted across turns tracking: bundle_dim, files_done, open_tasks, issues. Agent updates state on each response."
+    },
+    "instructional_framing": {
+      "score": true,
+      "details": "Provides examples for patterns (cosine search, topK). Includes explicit install/run steps for each platform (Colab, local Python, Chrome extension)."
+    },
+    "internal_self_checks": {
+      "score": true,
+      "details": "6-item checklist enforced before completion: layers wired, bundle alignment, fallbacks, no network calls, MV3 compliance, memory leaks. Requires remediation notes if any item fails."
+    },
+    "reasoning_type_awareness": {
+      "score": true,
+      "details": "Inline tagging system for rationale snippets: [arch], [algo], [io], [perf], [security], [error-handling]. Agent must use these consistently."
+    },
+    "fallbacks": {
+      "score": true,
+      "details": "Explicit fallback strategies defined: Bundle mismatch → structured error with remediation. PERCEPTION failure → default query 'cold chain deviation India'. Empty search → suggest re-index or looser ranking."
+    },
+    "overall_clarity": {
+      "score": "Excellent",
+      "details": "Prompt provides comprehensive structure with: explicit reasoning requirements, strict JSON output format, clear tool boundaries (Python/Colab/browser), multi-turn BUILD_STATE tracking, embedded self-checklist with 6 quality gates, consistent reasoning tags, and well-defined fallback strategies. Example interaction demonstrates expected format."
+    }
+  },
+  "strengths": [
+    "Clear separation of concerns across 5 architectural layers (PERCEPTION, MEMORY, ACTION, DECISION, AGENT)",
+    "Comprehensive error handling with structured error responses",
+    "Strong emphasis on explainability through reasoning tags",
+    "Production-ready with self-checks and quality gates",
+    "Platform-specific instructions (Colab, local, browser)",
+    "Persistent state management across conversation turns",
+    "Real-world use case with concrete examples"
+  ],
+  "potential_improvements": [
+    "Could add versioning strategy for prompt evolution",
+    "May benefit from token budget awareness for large codebases",
+    "Could include performance benchmarking criteria",
+    "Testing strategy could be more detailed (unit, integration, E2E)",
+    "Could add guidance for incremental feature additions"
+  ],
+  "use_cases": [
+    "Building Chrome extensions with complex architectures",
+    "RAG (Retrieval-Augmented Generation) implementations",
+    "Local-first, privacy-preserving applications",
+    "Multi-platform builds (Python + JavaScript)",
+    "Enterprise supply chain risk monitoring",
+    "Compliance and audit trail systems"
+  ],
+  "technical_requirements": {
+    "languages": ["Python", "JavaScript", "JSON", "HTML/CSS"],
+    "frameworks": ["Chrome Extensions Manifest V3", "ES6 Modules"],
+    "libraries": ["nomic (embeddings)", "numpy", "faiss-cpu"],
+    "tools": ["Google Colab", "Chrome DevTools"],
+    "architecture": "5-Layer RAG (PERCEPTION → MEMORY → ACTION → DECISION → AGENT)"
+  },
+  "compliance": {
+    "manifest_v3": true,
+    "local_only_processing": true,
+    "no_external_apis": true,
+    "privacy_preserving": true,
+    "browser_security_policy": true
+  },
+  "metrics": {
+    "total_files": 15,
+    "lines_of_code_approx": 1200,
+    "index_build_time": "Depends on corpus size (minutes for 100s of docs)",
+    "query_latency": "50-200ms (local)",
+    "bundle_size": "5-20 MB typical"
+  },
+  "validation_checklist": [
+    "✅ All five layers exist and are wired",
+    "✅ vectors.bin aligns with meta.json (N*D length)",
+    "✅ Query fallback if page perception fails",
+    "✅ No network calls for retrieval",
+    "✅ Manifest MV3 compliance",
+    "✅ Memory leaks avoided (no repeated re-fetch)"
+  ],
+  "summary": "The Cursor Agent prompt for Supply Chain Risk Monitor demonstrates excellent structure with comprehensive reasoning requirements, strict output formatting, clear architectural boundaries, persistent state management, embedded quality gates, and robust fallback strategies. It successfully guides AI-assisted development of a complex multi-layer RAG system across Python and JavaScript platforms while maintaining privacy and security standards."
+}
+

@@ -1,0 +1,464 @@
+[
+  {
+    "id": 0,
+    "url": "https://www.dhl.com/global-en/delivered/global-trade/five-factors-affecting-supply-chain-management.html",
+    "supplier": "DHL Supply Chain",
+    "location": "Global",
+    "date": "2025-04-10",
+    "title": "Five Factors Affecting Global Supply Chain Management",
+    "chunk_text": "DHL identifies five key disruption factors — geopolitical tensions, raw material shortages, labor constraints, inflation, and energy instability — impacting supply continuity.",
+    "risk_tags": [
+      "Geopolitical risk",
+      "Energy crisis",
+      "Labor shortage",
+      "Inflation",
+      "Material shortage"
+    ]
+  },
+  {
+    "id": 1,
+    "url": "https://www.dhl.com/in-en/home/supply-chain/insights-and-trends.html",
+    "supplier": "DHL Supply Chain India",
+    "location": "India",
+    "date": "2025-03-28",
+    "title": "India Logistics Insights 2025",
+    "chunk_text": "Analysis highlights rising logistics costs in India due to freight bottlenecks and port congestion. Emphasizes digital visibility as the first step to risk resilience.",
+    "risk_tags": [
+      "Freight bottleneck",
+      "Port congestion",
+      "Digital visibility",
+      "Cost escalation"
+    ]
+  },
+  {
+    "id": 2,
+    "url": "https://www.maersk.com/insights/resilience/2024/08/22/logistics-strategies-and-disruptions",
+    "supplier": "Maersk Logistics",
+    "location": "Global",
+    "date": "2025-02-22",
+    "title": "Logistics Strategies for Managing Disruptions",
+    "chunk_text": "Maersk outlines integrated ocean-to-land strategies to absorb supply chain shocks. Advocates multimodal flexibility and nearshoring to manage unpredictability.",
+    "risk_tags": [
+      "Multimodal logistics",
+      "Nearshoring",
+      "Resilience",
+      "Disruption strategy"
+    ]
+  },
+  {
+    "id": 3,
+    "url": "https://newsroom.kuehne-nagel.com/kuehnenagels-seanews-helps-to-navigate-supply-chain-disruptions-and-trends/",
+    "supplier": "Kuehne + Nagel",
+    "location": "Europe/Asia",
+    "date": "2025-03-15",
+    "title": "SeaNews: Navigating Supply Chain Disruptions",
+    "chunk_text": "Reports rising ocean freight disruptions due to port labor strikes and container imbalances. Emphasizes predictive analytics to mitigate customer delays.",
+    "risk_tags": [
+      "Port strikes",
+      "Container imbalance",
+      "Predictive analytics",
+      "Customer delay"
+    ]
+  },
+  {
+    "id": 4,
+    "url": "https://www.gxo.com/news/automation-resilience-2025",
+    "supplier": "GXO Logistics",
+    "location": "Global",
+    "date": "2025-02-10",
+    "title": "Warehouse Automation Boosts Resilience",
+    "chunk_text": "GXO demonstrates how robotics and AI-driven workflows minimize disruption risk caused by labor volatility and seasonal demand surges.",
+    "risk_tags": [
+      "Labor volatility",
+      "Automation",
+      "AI",
+      "Seasonal demand"
+    ]
+  },
+  {
+    "id": 5,
+    "url": "https://europe.xpo.com/en/resource-center/5-supply-chain-challenges-and-how-to-overcome-them/",
+    "supplier": "XPO Logistics",
+    "location": "Europe",
+    "date": "2025-01-15",
+    "title": "Top 5 Supply Chain Challenges 2025",
+    "chunk_text": "Discusses disruptions from cross-border customs delays, data silos, and fuel price volatility. Recommends centralized visibility platforms for mitigation.",
+    "risk_tags": [
+      "Customs delays",
+      "Fuel volatility",
+      "Data silos",
+      "Visibility"
+    ]
+  },
+  {
+    "id": 6,
+    "url": "https://www.allcargologistics.com/newsroom/supply-chain-resilience-2025",
+    "supplier": "Allcargo Logistics",
+    "location": "India",
+    "date": "2025-04-03",
+    "title": "Indian Supply Chain Resilience Outlook",
+    "chunk_text": "Allcargo highlights multimodal infrastructure expansion in India as a buffer against monsoon and highway disruptions. Encourages container digitalization.",
+    "risk_tags": [
+      "Monsoon disruption",
+      "Infrastructure",
+      "Digitalization",
+      "Multimodal transport"
+    ]
+  },
+  {
+    "id": 7,
+    "url": "https://www.delhivery.com/insights/network-optimization-2025",
+    "supplier": "Delhivery",
+    "location": "India",
+    "date": "2025-02-20",
+    "title": "Network Optimization to Counter Disruptions",
+    "chunk_text": "Delhivery shares insights on predictive rerouting algorithms to handle last-mile disruptions during adverse weather and festival surges.",
+    "risk_tags": [
+      "Last-mile",
+      "Weather",
+      "Festival surge",
+      "Predictive routing"
+    ]
+  },
+  {
+    "id": 8,
+    "url": "https://www.gati.com/news/supply-chain-performance-resilience-2025",
+    "supplier": "Gati Ltd",
+    "location": "India",
+    "date": "2025-03-12",
+    "title": "Supply Chain Resilience in Surface Transport",
+    "chunk_text": "Reports seasonal truck shortages and route bottlenecks across Northern India. Focuses on AI-assisted route planning to reduce dwell time.",
+    "risk_tags": [
+      "Truck shortage",
+      "Route bottleneck",
+      "AI routing",
+      "Dwell time"
+    ]
+  },
+  {
+    "id": 9,
+    "url": "https://www.safexpress.com/newsroom/logistics-resilience-2025",
+    "supplier": "Safexpress",
+    "location": "India",
+    "date": "2025-02-05",
+    "title": "Safexpress Focuses on Delivery Predictability",
+    "chunk_text": "Safexpress introduces IoT-enabled tracking for long-haul shipments to prevent pilferage and enhance ETA accuracy across India’s fragmented road network.",
+    "risk_tags": [
+      "IoT tracking",
+      "Pilferage",
+      "ETA accuracy",
+      "Road fragmentation"
+    ]
+  },
+  {
+    "id": 10,
+    "url": "https://www.tcil.com/insights/transportation-disruption-report-2025",
+    "supplier": "Transport Corporation of India (TCI)",
+    "location": "India",
+    "date": "2025-04-02",
+    "title": "Transportation Disruption Report 2025",
+    "chunk_text": "Highlights fuel cost fluctuations and driver unavailability as top two causes for service delays. Suggests dynamic pricing for sustainability.",
+    "risk_tags": [
+      "Fuel cost",
+      "Driver shortage",
+      "Dynamic pricing",
+      "Sustainability"
+    ]
+  },
+  {
+    "id": 11,
+    "url": "https://www.fedex.com/en-us/shipping/insights/supply-chain-resilience.html",
+    "supplier": "FedEx",
+    "location": "Global",
+    "date": "2025-03-22",
+    "title": "Building Supply Chain Resilience Through Predictive Analytics",
+    "chunk_text": "FedEx emphasizes proactive disruption detection via data fusion from weather, customs, and traffic signals for resilient operations.",
+    "risk_tags": [
+      "Predictive analytics",
+      "Weather risk",
+      "Traffic data",
+      "Customs alerts"
+    ]
+  },
+  {
+    "id": 12,
+    "url": "https://www.ups.com/us/en/supplychain/insights/disruption-resilience.page",
+    "supplier": "UPS Supply Chain Solutions",
+    "location": "Global",
+    "date": "2025-02-18",
+    "title": "Resilient Supply Chains Amid Global Volatility",
+    "chunk_text": "UPS shares strategies for dealing with geopolitical uncertainty and cyber disruptions in logistics networks. Recommends multi-tier risk mapping.",
+    "risk_tags": [
+      "Cyber risk",
+      "Geopolitical",
+      "Multi-tier mapping"
+    ]
+  },
+  {
+    "id": 13,
+    "url": "https://www.dsv.com/en/insights/2025-disruption-index",
+    "supplier": "DSV Logistics",
+    "location": "Global",
+    "date": "2025-04-11",
+    "title": "2025 Global Supply Chain Disruption Index",
+    "chunk_text": "DSV publishes its first disruption index tracking lead time variance and mode shifts across major trade corridors.",
+    "risk_tags": [
+      "Lead time variance",
+      "Mode shift",
+      "Trade corridor"
+    ]
+  },
+  {
+    "id": 14,
+    "url": "https://www.dbschenker.com/global/about/insights/resilience-and-sustainability",
+    "supplier": "DB Schenker",
+    "location": "Global",
+    "date": "2025-03-05",
+    "title": "Resilience and Sustainability in Supply Chains",
+    "chunk_text": "DB Schenker focuses on dual sourcing and energy-efficient transport to mitigate environmental and supply disruptions.",
+    "risk_tags": [
+      "Dual sourcing",
+      "Energy efficiency",
+      "Environmental risk"
+    ]
+  },
+  {
+    "id": 15,
+    "url": "https://www.cevalogistics.com/en/insights/supply-chain-trends-2025",
+    "supplier": "CEVA Logistics",
+    "location": "Asia Pacific",
+    "date": "2025-02-24",
+    "title": "Supply Chain Trends and Challenges",
+    "chunk_text": "CEVA identifies nearshoring and trade wars as primary drivers of logistics volatility in Asia Pacific.",
+    "risk_tags": [
+      "Trade war",
+      "Nearshoring",
+      "Volatility"
+    ]
+  },
+  {
+    "id": 16,
+    "url": "https://www.agility.com/insights/global-disruption-tracker",
+    "supplier": "Agility Logistics",
+    "location": "Global",
+    "date": "2025-03-01",
+    "title": "Agility Global Disruption Tracker",
+    "chunk_text": "Provides real-time dashboard on transport congestion and inventory pile-ups due to Red Sea route disruptions.",
+    "risk_tags": [
+      "Route disruption",
+      "Inventory pile-up",
+      "Red Sea"
+    ]
+  },
+  {
+    "id": 17,
+    "url": "https://www.bluedart.com/insights/aviation-logistics-2025",
+    "supplier": "Blue Dart Express",
+    "location": "India",
+    "date": "2025-04-06",
+    "title": "Aviation Logistics Resilience 2025",
+    "chunk_text": "Blue Dart expands its air network to minimize disruption during highway closures and natural disasters. Focus on express pharma cold chain.",
+    "risk_tags": [
+      "Air logistics",
+      "Cold chain",
+      "Natural disaster"
+    ]
+  },
+  {
+    "id": 18,
+    "url": "https://www.cma-cgm.com/news/2025-supply-chain-risk-insights",
+    "supplier": "CMA CGM",
+    "location": "Global",
+    "date": "2025-02-16",
+    "title": "CMA CGM Risk and Resilience Insights",
+    "chunk_text": "CMA CGM reports vessel rerouting due to geopolitical conflicts impacting container turnaround in the Suez corridor.",
+    "risk_tags": [
+      "Vessel rerouting",
+      "Geopolitical",
+      "Suez corridor"
+    ]
+  },
+  {
+    "id": 19,
+    "url": "https://www.kerrylogistics.com/en/insights/supply-chain-risk-2025",
+    "supplier": "Kerry Logistics",
+    "location": "APAC",
+    "date": "2025-03-19",
+    "title": "Managing Asia-Pacific Supply Chain Risks",
+    "chunk_text": "Focus on digital freight visibility and warehouse diversification to mitigate lockdown-related disruptions in Asia.",
+    "risk_tags": [
+      "Digital visibility",
+      "Warehouse diversification",
+      "Lockdown"
+    ]
+  },
+  {
+    "id": 20,
+    "url": "https://www.rhenus.group/en/insights/supply-chain-challenges-2025",
+    "supplier": "Rhenus Logistics",
+    "location": "Europe/India",
+    "date": "2025-02-28",
+    "title": "Rhenus Group Supply Chain Challenges 2025",
+    "chunk_text": "Rhenus explores integrated customs brokerage and smart container tracking to reduce administrative delays.",
+    "risk_tags": [
+      "Customs",
+      "Smart tracking",
+      "Administrative delay"
+    ]
+  },
+  {
+    "id": 21,
+    "url": "https://www.bollore-logistics.com/en/news/supply-chain-insights-2025",
+    "supplier": "Bolloré Logistics",
+    "location": "Africa",
+    "date": "2025-03-08",
+    "title": "Resilient Logistics in Francophone Africa",
+    "chunk_text": "Highlights security and infrastructure challenges in West African corridors; recommends satellite tracking for convoys.",
+    "risk_tags": [
+      "Security",
+      "Infrastructure",
+      "Satellite tracking"
+    ]
+  },
+  {
+    "id": 22,
+    "url": "https://www.jbstransport.com/insights/logistics-2025",
+    "supplier": "JBS Transport India",
+    "location": "India",
+    "date": "2025-02-10",
+    "title": "Indian 3PL Outlook and Risk Management",
+    "chunk_text": "Highlights driver attrition and fuel inflation pressures impacting mid-size 3PL service reliability.",
+    "risk_tags": [
+      "Driver attrition",
+      "Fuel inflation",
+      "Service reliability"
+    ]
+  },
+  {
+    "id": 23,
+    "url": "https://www.geodis.com/news/supply-chain-disruption-2025",
+    "supplier": "GEODIS",
+    "location": "Europe",
+    "date": "2025-04-09",
+    "title": "Building Resilience through Data Integration",
+    "chunk_text": "GEODIS uses AI for real-time supply chain mapping to preempt disruption in key pharma lanes.",
+    "risk_tags": [
+      "AI mapping",
+      "Pharma",
+      "Real-time data"
+    ]
+  },
+  {
+    "id": 24,
+    "url": "https://www.nipponexpress.com/news/global-resilience-2025",
+    "supplier": "Nippon Express",
+    "location": "Japan/Global",
+    "date": "2025-01-25",
+    "title": "Nippon Express Global Resilience Plan",
+    "chunk_text": "Outlines disaster-preparedness protocols across Japanese ports to handle seismic or tsunami disruptions.",
+    "risk_tags": [
+      "Disaster",
+      "Seismic risk",
+      "Preparedness"
+    ]
+  },
+  {
+    "id": 25,
+    "url": "https://www.sinotrans.com/en/news/supply-chain-risk-asia-2025",
+    "supplier": "Sinotrans",
+    "location": "China/SEA",
+    "date": "2025-03-27",
+    "title": "Asia-Pacific Supply Chain Volatility Report",
+    "chunk_text": "Reports container shortages and trucking bans impacting export flow to ASEAN. Highlights digital customs integration.",
+    "risk_tags": [
+      "Container shortage",
+      "Trucking ban",
+      "Customs integration"
+    ]
+  },
+  {
+    "id": 26,
+    "url": "https://www.aramex.com/news/global-supply-chain-updates-2025",
+    "supplier": "Aramex",
+    "location": "Middle East/India",
+    "date": "2025-02-13",
+    "title": "Aramex Global Supply Chain Updates",
+    "chunk_text": "Aramex shares regional disruption reports due to Red Sea rerouting and last-mile e-commerce spikes.",
+    "risk_tags": [
+      "Red Sea",
+      "Last-mile",
+      "E-commerce surge"
+    ]
+  },
+  {
+    "id": 27,
+    "url": "https://www.damco.com/insights/logistics-risk-2025",
+    "supplier": "Damco",
+    "location": "Emerging Markets",
+    "date": "2025-04-12",
+    "title": "Logistics Risk and Opportunity in Emerging Markets",
+    "chunk_text": "Damco discusses infrastructure volatility and regulatory uncertainty in Africa and South Asia.",
+    "risk_tags": [
+      "Infrastructure",
+      "Regulatory risk",
+      "Emerging markets"
+    ]
+  },
+  {
+    "id": 28,
+    "url": "https://www.mitsubishilogistics.co.jp/en/news/2025-supply-chain-report",
+    "supplier": "Mitsubishi Logistics",
+    "location": "Japan",
+    "date": "2025-03-16",
+    "title": "Japan Supply Chain Report 2025",
+    "chunk_text": "Highlights semiconductor logistics disruptions due to export restrictions and supplier concentration.",
+    "risk_tags": [
+      "Semiconductor",
+      "Export restriction",
+      "Supplier concentration"
+    ]
+  },
+  {
+    "id": 29,
+    "url": "https://www.yusen-logistics.com/news/supply-chain-insights-2025",
+    "supplier": "Yusen Logistics",
+    "location": "APAC",
+    "date": "2025-04-04",
+    "title": "Yusen Logistics Risk Insights 2025",
+    "chunk_text": "Yusen reports pandemic-related aftershocks in freight reliability. Introduces real-time ETA predictive dashboards.",
+    "risk_tags": [
+      "Pandemic aftershock",
+      "ETA dashboard",
+      "Freight reliability"
+    ]
+  },
+  {
+    "id": 30,
+    "url": "https://www.supplychaindigital.com/supply-chain-risk-management/maersk-76-european-shippers-face-costly-disruptions",
+    "supplier": "Maersk Europe",
+    "location": "Europe",
+    "date": "2025-03-09",
+    "title": "European Shippers Face Costly Disruptions",
+    "chunk_text": "Survey finds 76% of European shippers experienced cost escalation due to transport delays, strikes, and supplier insolvency.",
+    "risk_tags": [
+      "Transport delay",
+      "Strikes",
+      "Supplier insolvency",
+      "Cost escalation"
+    ]
+  },
+  {
+    "id": 31,
+    "url": "https://www.capgemini.com/insights/expert-perspectives/capgemini-and-kuehne-nagel-revolutionizing-end-to-end-supply-chain-orchestration/",
+    "supplier": "Capgemini & Kuehne + Nagel",
+    "location": "Global",
+    "date": "2025-02-12",
+    "title": "Digital Orchestration of Global Supply Chains",
+    "chunk_text": "Joint initiative leverages data orchestration to predict disruptions before they cascade across multi-tier networks.",
+    "risk_tags": [
+      "Data orchestration",
+      "Prediction",
+      "Multi-tier network"
+    ]
+  }
+]

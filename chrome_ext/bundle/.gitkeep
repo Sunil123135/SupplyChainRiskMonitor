@@ -1,0 +1,9 @@
+# Place your index bundle files here:
+# - vectors.bin
+# - meta.json
+#
+# Generate these files by running:
+# cd ../index_build && python main.py
+#
+# Or use the Colab builder: colab_index_builder.py
+
