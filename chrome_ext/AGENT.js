@@ -3,6 +3,7 @@
 
 import { retrieve, synthesizeRiskSummary } from './ACTION.js';
 import { decide } from './DECISION.js';
+import { generateReplenishmentReport, buildForecastCard } from './DEMAND_FORECAST.js';
 
 /**
  * Main agent orchestration: PERCEPTION → MEMORY → ACTION → DECISION
@@ -56,13 +57,26 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         
         // Step 6: DECISION - Prioritize
         const { priority } = decide({ supplier, summary });
-        
-        // Step 7: Assemble final card
+
+        // Step 7: DEMAND_FORECAST - Replenishment recommendations (if data provided)
+        let forecastCard = {};
+        if (msg.inventory && msg.salesHistory) {
+          const recs = generateReplenishmentReport(
+            msg.inventory,
+            msg.salesHistory,
+            { referenceDate: msg.referenceDate }
+          );
+          forecastCard = buildForecastCard(recs);
+          console.log(`📦 Demand forecast: ${recs.length} SKUs need attention`);
+        }
+
+        // Step 8: Assemble final card
         const card = {
           title: "Supplier risk summary",
           query_used: query,
           priority: priority,
-          ...summary
+          ...summary,
+          ...forecastCard,
         };
         
         console.log('✅ Agent analysis complete:', card);

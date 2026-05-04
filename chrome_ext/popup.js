@@ -51,21 +51,52 @@ document.getElementById('go').onclick = async () => {
       `)
       .join('');
     
+    // Demand forecast section
+    const forecast = R.demandForecast;
+    let forecastHtml = '';
+    if (forecast && forecast.recommendations && forecast.recommendations.length > 0) {
+      const rowsHtml = forecast.recommendations.map(rec => {
+        const icon = rec.urgency === 'critical' ? '⚠️' : '⚡';
+        return `
+          <div class="forecast-row ${rec.urgency}">
+            <div>
+              <span class="forecast-sku">${rec.sku}</span>
+              <span class="forecast-badge ${rec.urgency}">${rec.urgency}</span>
+            </div>
+            <div class="forecast-meta">
+              ${rec.daysOfSupply} days stock &nbsp;·&nbsp;
+              Order <strong>${rec.recommendedOrderQty}</strong> units<br>
+              Reorder @ ${rec.reorderPoint} &nbsp;·&nbsp; ${rec.avgDailyDemand}/day avg
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      forecastHtml = `
+        <div class="section">
+          <div class="section-title">📦 Demand Forecast & Reorder</div>
+          ${rowsHtml}
+        </div>
+      `;
+    }
+
     div.innerHTML = `
       <div class="priority ${priorityClass}">${priorityIcon} ${R.priority || 'normal'} priority</div>
-      
+
       <div class="meta">
         <strong>Supplier:</strong> ${R.supplier || 'Unknown'} &nbsp;&nbsp;
         <strong>Location:</strong> ${R.location || 'Unknown'}
       </div>
-      
+
       ${R.query_used ? `<div class="meta" style="font-size:12px;"><strong>Query:</strong> ${R.query_used}</div>` : ''}
-      
+
       <div class="section">
         <div class="section-title">🏷️ Top Risk Factors</div>
         ${tagsHtml || '<span style="color:#5f6368;">No risks identified</span>'}
       </div>
-      
+
+      ${forecastHtml}
+
       <div class="section">
         <div class="section-title">📄 Evidence</div>
         ${evidenceHtml || '<div style="color:#5f6368;">No evidence found</div>'}

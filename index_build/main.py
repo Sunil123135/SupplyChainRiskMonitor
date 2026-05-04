@@ -1,12 +1,12 @@
 """
 Supply Chain Risk Monitor — Index Builder + Local Pipeline Test
-This file explicitly calls: PERCEPTION, MEMORY, ACTION, DECISION, AGENT.
+This file explicitly calls: PERCEPTION, MEMORY, ACTION, DECISION, DEMAND_FORECAST, AGENT.
 Run in Colab or locally. Exports bundle/vectors.bin + bundle/meta.json.
 """
 
 import os, json, re, math, time
-from typing import List, Dict, Any
-from dataclasses import dataclass
+from typing import List, Dict, Any, Optional
+from dataclasses import dataclass, field
 import numpy as np
 from tqdm import tqdm
 
@@ -159,10 +159,16 @@ def prioritize(summary: Dict[str, Any]) -> Dict[str, Any]:
     return summary
 
 # --- (H) AGENT (Python harness) ----------------------------------------------
-def agent_run(page_text: str, memory: MemoryIndex, embed_query_fn):
+def agent_run(
+    page_text: str,
+    memory: MemoryIndex,
+    embed_query_fn,
+    inventory: Optional[List[InventoryRecord]] = None,
+    sales_history: Optional[List[SalesRecord]] = None,
+    reference_date: Optional[str] = None,
+):
     # PERCEPTION
     perceived = perceive_from_text(page_text)
-    # Build a query blending seeds + top supplier candidate if any
     supplier = (perceived["supplier_candidates"][:1] or [""])[0]
     location = (perceived["locations"][:1] or [""])[0]
     query = " ".join(filter(None, [supplier, location, perceived["query_seed"]])).strip() or "cold chain deviation India"
@@ -172,13 +178,167 @@ def agent_run(page_text: str, memory: MemoryIndex, embed_query_fn):
     summary = synthesize_risk_summary(supplier or "Unknown Supplier", location or "Unknown", hits)
     # DECISION
     summary = prioritize(summary)
+    # DEMAND_FORECAST (optional — only when inventory data is provided)
+    forecast = {}
+    if inventory and sales_history:
+        recs = generate_replenishment_report(inventory, sales_history, reference_date=reference_date)
+        forecast = forecast_summary(recs)
     # AGENT output
     card = {
         "title": "Supplier risk summary",
         "query_used": query,
-        **summary
+        **summary,
+        **forecast,
     }
     return card
+
+# --- (J) DEMAND_FORECAST: reorder points + replenishment recommendations ------
+@dataclass
+class SalesRecord:
+    product_id: str
+    sku: str
+    date: str        # ISO date string YYYY-MM-DD
+    units_sold: int
+    status: str = "completed"  # "completed" | "cancelled" | "refunded"
+
+@dataclass
+class InventoryRecord:
+    product_id: str
+    sku: str
+    quantity_on_hand: int
+    quantity_on_order: int = 0
+    supplier_lead_time_days: int = 14
+
+@dataclass
+class ReplenishmentRecommendation:
+    product_id: str
+    sku: str
+    current_stock: int
+    quantity_on_order: int
+    avg_daily_demand: float
+    max_daily_demand: float
+    reorder_point: int
+    safety_stock: int
+    days_of_supply: float
+    urgency: str          # "critical" | "warning" | "ok"
+    recommended_order_qty: int
+
+def _filter_completed_sales(records: List[SalesRecord]) -> List[SalesRecord]:
+    return [r for r in records if r.status not in ("cancelled", "refunded")]
+
+def compute_demand_stats(
+    product_id: str,
+    sales_history: List[SalesRecord],
+    lookback_days: int = 30,
+    peak_window_days: int = 7,
+    reference_date: Optional[str] = None,
+) -> Dict[str, float]:
+    """Return avg_daily_demand and max_daily_demand for a product."""
+    from datetime import date, timedelta
+    ref = date.fromisoformat(reference_date) if reference_date else date.today()
+
+    completed = _filter_completed_sales(sales_history)
+    product_sales = [r for r in completed if r.product_id == product_id]
+
+    def units_in_window(days: int) -> int:
+        cutoff = ref - timedelta(days=days)
+        return sum(r.units_sold for r in product_sales if date.fromisoformat(r.date) >= cutoff)
+
+    total_30 = units_in_window(lookback_days)
+    avg_daily = total_30 / lookback_days
+
+    # Max daily demand: highest single-day total within the peak window
+    from collections import defaultdict
+    daily: Dict[str, int] = defaultdict(int)
+    cutoff_peak = ref - timedelta(days=peak_window_days)
+    for r in product_sales:
+        if date.fromisoformat(r.date) >= cutoff_peak:
+            daily[r.date] += r.units_sold
+    max_daily = max(daily.values(), default=avg_daily) if daily else avg_daily
+
+    return {"avg_daily_demand": avg_daily, "max_daily_demand": max_daily}
+
+def calculate_reorder_point(
+    avg_daily_demand: float,
+    max_daily_demand: float,
+    lead_time_days: int,
+) -> Dict[str, int]:
+    """Compute reorder point and safety stock using the standard formula."""
+    safety_stock = math.ceil((max_daily_demand - avg_daily_demand) * lead_time_days)
+    reorder_point = math.ceil(avg_daily_demand * lead_time_days + safety_stock)
+    return {"reorder_point": reorder_point, "safety_stock": safety_stock}
+
+def generate_replenishment_report(
+    inventory: List[InventoryRecord],
+    sales_history: List[SalesRecord],
+    reference_date: Optional[str] = None,
+) -> List[ReplenishmentRecommendation]:
+    """
+    Produce replenishment recommendations for all tracked SKUs.
+    Only returns items with urgency 'critical' or 'warning', sorted by days_of_supply asc.
+    """
+    recommendations = []
+
+    for inv in inventory:
+        stats = compute_demand_stats(inv.product_id, sales_history, reference_date=reference_date)
+        avg_daily = stats["avg_daily_demand"]
+        max_daily = stats["max_daily_demand"]
+        calc = calculate_reorder_point(avg_daily, max_daily, inv.supplier_lead_time_days)
+
+        days_of_supply = (inv.quantity_on_hand / avg_daily) if avg_daily > 0 else float("inf")
+        lead = inv.supplier_lead_time_days
+
+        if days_of_supply < lead:
+            urgency = "critical"
+        elif days_of_supply < lead * 2:
+            urgency = "warning"
+        else:
+            urgency = "ok"
+
+        if urgency == "ok":
+            continue
+
+        # Recommended order = enough to cover 2× lead time, net of on-order qty
+        target_qty = math.ceil(avg_daily * lead * 2 + calc["safety_stock"])
+        recommended_order_qty = max(0, target_qty - inv.quantity_on_hand - inv.quantity_on_order)
+
+        recommendations.append(ReplenishmentRecommendation(
+            product_id=inv.product_id,
+            sku=inv.sku,
+            current_stock=inv.quantity_on_hand,
+            quantity_on_order=inv.quantity_on_order,
+            avg_daily_demand=round(avg_daily, 2),
+            max_daily_demand=round(max_daily, 2),
+            reorder_point=calc["reorder_point"],
+            safety_stock=calc["safety_stock"],
+            days_of_supply=round(days_of_supply, 1),
+            urgency=urgency,
+            recommended_order_qty=recommended_order_qty,
+        ))
+
+    recommendations.sort(key=lambda r: r.days_of_supply)
+    return recommendations
+
+def forecast_summary(recommendations: List[ReplenishmentRecommendation]) -> Dict[str, Any]:
+    """Convert replenishment recommendations into a JSON-serialisable summary card."""
+    return {
+        "demand_forecast": {
+            "critical_skus": [r.sku for r in recommendations if r.urgency == "critical"],
+            "warning_skus": [r.sku for r in recommendations if r.urgency == "warning"],
+            "recommendations": [
+                {
+                    "sku": r.sku,
+                    "urgency": r.urgency,
+                    "current_stock": r.current_stock,
+                    "days_of_supply": r.days_of_supply,
+                    "reorder_point": r.reorder_point,
+                    "recommended_order_qty": r.recommended_order_qty,
+                    "avg_daily_demand": r.avg_daily_demand,
+                }
+                for r in recommendations
+            ],
+        }
+    }
 
 # --- (I) BUILD + TEST ---------------------------------------------------------
 def build_and_export_index(raw_docs: List[Dict[str, str]]):
@@ -258,16 +418,52 @@ def demo():
     memory = MemoryIndex.from_bundle(BUNDLE_DIR, EMBED_DIM)
     print(f"Loaded {len(memory.meta)} vectors")
 
+    # --- DEMAND_FORECAST demo data ---
+    # Simulate 30 days of sales history (reference date: 2025-05-04)
+    REF_DATE = "2025-05-04"
+    from datetime import date, timedelta
+    ref = date.fromisoformat(REF_DATE)
+
+    def make_sales(product_id: str, sku: str, daily_units: int, peak_day_units: int, peak_offset: int = 3) -> List[SalesRecord]:
+        records = []
+        for i in range(30):
+            d = (ref - timedelta(days=29 - i)).isoformat()
+            units = peak_day_units if i == (29 - peak_offset) else daily_units
+            records.append(SalesRecord(product_id=product_id, sku=sku, date=d, units_sold=units))
+        return records
+
+    sales_history: List[SalesRecord] = (
+        make_sales("prod-001", "VIAL-100ML", daily_units=5, peak_day_units=12, peak_offset=3) +
+        make_sales("prod-002", "COLD-PKG-L", daily_units=2, peak_day_units=6,  peak_offset=2) +
+        make_sales("prod-003", "TEMP-LOGGER", daily_units=8, peak_day_units=8,  peak_offset=1)
+    )
+
+    inventory: List[InventoryRecord] = [
+        InventoryRecord(product_id="prod-001", sku="VIAL-100ML",   quantity_on_hand=40,  quantity_on_order=0,  supplier_lead_time_days=14),
+        InventoryRecord(product_id="prod-002", sku="COLD-PKG-L",   quantity_on_hand=25,  quantity_on_order=10, supplier_lead_time_days=10),
+        InventoryRecord(product_id="prod-003", sku="TEMP-LOGGER",  quantity_on_hand=200, quantity_on_order=0,  supplier_lead_time_days=7),
+    ]
+
+    print("\n=== Running DEMAND_FORECAST (standalone) ===")
+    recs = generate_replenishment_report(inventory, sales_history, reference_date=REF_DATE)
+    if recs:
+        for r in recs:
+            print(f"  [{r.urgency.upper()}] {r.sku}: {r.days_of_supply} days supply, reorder@{r.reorder_point}, order {r.recommended_order_qty} units")
+    else:
+        print("  All SKUs adequately stocked.")
+
     # Simulate a page the user is reading
     page_text = """
       Breaking: ACME Logistics faces investigation after reports of cold chain deviation in Mumbai hub.
       Temperature data suggests potential non-compliance during apron transfer.
     """
 
-    # Run the AGENT pipeline (calls all layers)
+    # Run the full AGENT pipeline (all layers including DEMAND_FORECAST)
     print("\n=== Running AGENT Pipeline ===")
     print("Page text:", page_text.strip())
-    card = agent_run(page_text, memory, embed_texts_nomic)
+    card = agent_run(page_text, memory, embed_texts_nomic,
+                     inventory=inventory, sales_history=sales_history,
+                     reference_date=REF_DATE)
 
     print("\n=== SUPPLIER RISK SUMMARY CARD ===")
     print(json.dumps(card, indent=2))
