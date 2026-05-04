@@ -7,6 +7,12 @@
       "skillPath": "skills/fabricks-sql-analyzer/SKILL.md",
       "computedHash": "de88392c4932d85609d9bdae7248c852ac0ebe2bcfbe4f3c0ccbb207bfe321c0"
     },
+    "hermes-agent": {
+      "source": "wihy/hermes-agent-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "d6fb5f9eb7a276c2282aa56eb1156ae36549cd542a0e0ef8e62bc67f4a01ce64"
+    },
     "openclaw-secure-linux-cloud": {
       "source": "xixu-me/skills",
       "sourceType": "github",
