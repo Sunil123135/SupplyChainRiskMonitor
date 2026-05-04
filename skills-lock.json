@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "demand-forecasting": {
+      "source": "finsilabs/awesome-ecommerce-skills",
+      "sourceType": "github",
+      "skillPath": "skills/business-operations/demand-forecasting/SKILL.md",
+      "computedHash": "a35d8383121a2b1ba7abe4666e94e6e5fd836af4afb7f682a49ce17686904e33"
+    }
+  }
+}
