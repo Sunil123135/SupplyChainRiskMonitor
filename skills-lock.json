@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/fabricks-sql-analyzer/SKILL.md",
       "computedHash": "de88392c4932d85609d9bdae7248c852ac0ebe2bcfbe4f3c0ccbb207bfe321c0"
+    },
+    "openclaw-secure-linux-cloud": {
+      "source": "xixu-me/skills",
+      "sourceType": "github",
+      "skillPath": "skills/openclaw-secure-linux-cloud/SKILL.md",
+      "computedHash": "405b7ea93f5de195fda67b26bb4d409fa76b1b7ef5d0b1809366e18e54b134e3"
     }
   }
 }
