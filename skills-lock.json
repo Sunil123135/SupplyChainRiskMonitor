@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "databricks-apps": {
+      "source": "databricks/databricks-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/databricks-apps/SKILL.md",
+      "computedHash": "392948f9421ee577c761a9156882c80553f80dec9a026f3be76eeeeeb0006487"
+    },
     "fabricks-sql-analyzer": {
       "source": "bmsuisse/skills",
       "sourceType": "github",
