@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "fabricks-sql-analyzer": {
+      "source": "bmsuisse/skills",
+      "sourceType": "github",
+      "skillPath": "skills/fabricks-sql-analyzer/SKILL.md",
+      "computedHash": "de88392c4932d85609d9bdae7248c852ac0ebe2bcfbe4f3c0ccbb207bfe321c0"
+    }
+  }
+}
