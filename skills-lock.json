@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "algo-forecast-prophet": {
+      "source": "asgard-ai-platform/skills",
+      "sourceType": "github",
+      "skillPath": "algo-forecast-prophet/SKILL.md",
+      "computedHash": "0bb294cb0bc0f672f8bd8ee2e8d0a30b8445531f7a2975962aff35c1e1dbfff7"
+    }
+  }
+}
