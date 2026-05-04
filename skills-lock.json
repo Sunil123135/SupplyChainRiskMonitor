@@ -7,6 +7,12 @@
       "skillPath": "skills/databricks-apps/SKILL.md",
       "computedHash": "392948f9421ee577c761a9156882c80553f80dec9a026f3be76eeeeeb0006487"
     },
+    "databricks-lakebase": {
+      "source": "databricks/databricks-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/databricks-lakebase/SKILL.md",
+      "computedHash": "636e116365e103a481ffc28eb575a76896eb1dbf9555f72d8c080711b0e3ad6e"
+    },
     "databricks-pipelines": {
       "source": "databricks/databricks-agent-skills",
       "sourceType": "github",
