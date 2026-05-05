@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "sap-abap": {
+      "source": "secondsky/sap-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/sap-abap/skills/sap-abap/SKILL.md",
+      "computedHash": "88b465082591c21d519a466ed7077e1064d204d51011a492976d70cd55ed29cc"
+    }
+  }
+}
