@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "sap-fiori-tools": {
+      "source": "secondsky/sap-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/sap-fiori-tools/skills/sap-fiori-tools/SKILL.md",
+      "computedHash": "7ddad64624b06366aaee16422334c3cae237d48aa4fd250663c35849b4600456"
+    }
+  }
+}
