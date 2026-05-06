@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "logistics-expert": {
+      "source": "personamanagmentlayer/pcl",
+      "sourceType": "github",
+      "skillPath": "stdlib/domains/logistics/SKILL.md",
+      "computedHash": "f98ccfba717506f712c84e38c4200a22e16dda94b3117600f49d6ef7b2ed7558"
+    }
+  }
+}
