@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "stdlib/domains/logistics/SKILL.md",
       "computedHash": "f98ccfba717506f712c84e38c4200a22e16dda94b3117600f49d6ef7b2ed7558"
+    },
+    "procurement-optimization": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/procurement-optimization/SKILL.md",
+      "computedHash": "2b9514d60b26cbdf036ec971b2540dcf7e6336cb456d7ed51dc32fb54b57d947"
     }
   }
 }
