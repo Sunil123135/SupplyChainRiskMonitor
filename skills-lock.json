@@ -12,6 +12,12 @@
       "sourceType": "github",
       "skillPath": "skills/supply-chain-optimizer/SKILL.md",
       "computedHash": "4a37f23a9617ba06515a3d2cda878385d3c6e9d02e76a8d4229810a24c33f23f"
+    },
+    "xborder-logistics": {
+      "source": "asgard-ai-platform/skills",
+      "sourceType": "github",
+      "skillPath": "xborder-logistics/SKILL.md",
+      "computedHash": "19f06783352926a8c017a9709bd9eccfcb9e71e0d940044af72efb859ca74114"
     }
   }
 }
