@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/azure-cost/SKILL.md",
       "computedHash": "2ccce76f71309a33e1730ea3d4e737a847c418313be4643dc105b44349087acf"
+    },
+    "supply-chain-optimizer": {
+      "source": "travisjneuman/.claude",
+      "sourceType": "github",
+      "skillPath": "skills/supply-chain-optimizer/SKILL.md",
+      "computedHash": "4a37f23a9617ba06515a3d2cda878385d3c6e9d02e76a8d4229810a24c33f23f"
     }
   }
 }
