@@ -18,6 +18,12 @@
       "sourceType": "github",
       "skillPath": "skills/procurement-optimization/SKILL.md",
       "computedHash": "2b9514d60b26cbdf036ec971b2540dcf7e6336cb456d7ed51dc32fb54b57d947"
+    },
+    "shipping-rate-calculator": {
+      "source": "finsilabs/awesome-ecommerce-skills",
+      "sourceType": "github",
+      "skillPath": "skills/fulfillment-shipping/shipping-rate-calculator/SKILL.md",
+      "computedHash": "d835df3360331c94a3b7d011593b2745ec3b26e0e9999d5eddf7b86b70e62ff3"
     }
   }
 }
