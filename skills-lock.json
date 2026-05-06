@@ -7,6 +7,12 @@
       "skillPath": "skills/azure-cost/SKILL.md",
       "computedHash": "2ccce76f71309a33e1730ea3d4e737a847c418313be4643dc105b44349087acf"
     },
+    "food-beverage-supply-chain": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/food-beverage-supply-chain/SKILL.md",
+      "computedHash": "4238dbe42a5f65f4f63fc9bd0a1abc761ad0a8767a99a9a32bf97300f0a42aa0"
+    },
     "supply-chain-optimizer": {
       "source": "travisjneuman/.claude",
       "sourceType": "github",
