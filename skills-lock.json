@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "azure-cost": {
+      "source": "microsoft/azure-skills",
+      "sourceType": "github",
+      "skillPath": "skills/azure-cost/SKILL.md",
+      "computedHash": "2ccce76f71309a33e1730ea3d4e737a847c418313be4643dc105b44349087acf"
+    }
+  }
+}
