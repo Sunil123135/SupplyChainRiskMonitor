@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "dart-optimization": {
+      "source": "dhruvanbhalara/skills",
+      "sourceType": "github",
+      "skillPath": "skills/dart/dart-optimization/SKILL.md",
+      "computedHash": "6b8742fe3a8e323a34a12922b73ab13a435b56eaabcb0841ba55fb12f7a8e6cc"
+    }
+  }
+}
