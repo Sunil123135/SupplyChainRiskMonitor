@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/dart/dart-optimization/SKILL.md",
       "computedHash": "6b8742fe3a8e323a34a12922b73ab13a435b56eaabcb0841ba55fb12f7a8e6cc"
+    },
+    "freight-optimization": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/freight-optimization/SKILL.md",
+      "computedHash": "423050a37f606d657b458d34cc12f06a69224b96bf496a9d21fdba7188d450a9"
     }
   }
 }
