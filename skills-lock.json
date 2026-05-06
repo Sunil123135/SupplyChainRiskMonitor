@@ -13,6 +13,12 @@
       "skillPath": "skills/freight-optimization/SKILL.md",
       "computedHash": "423050a37f606d657b458d34cc12f06a69224b96bf496a9d21fdba7188d450a9"
     },
+    "last-mile-delivery": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/last-mile-delivery/SKILL.md",
+      "computedHash": "32f150ce155f927ab312435655d17821238e3a064260338df014bdc7693d43b3"
+    },
     "route-optimization": {
       "source": "kishorkukreja/awesome-supply-chain",
       "sourceType": "github",
