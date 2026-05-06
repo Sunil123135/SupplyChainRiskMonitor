@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "inventory-optimization": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/inventory-optimization/SKILL.md",
+      "computedHash": "831dc5b188cac0d12a8e2965e9d199b82ddd1c7d41b75c88de0c3dfc5845c96e"
+    },
     "logistics-expert": {
       "source": "personamanagmentlayer/pcl",
       "sourceType": "github",
