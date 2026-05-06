@@ -13,6 +13,12 @@
       "skillPath": "skills/food-beverage-supply-chain/SKILL.md",
       "computedHash": "4238dbe42a5f65f4f63fc9bd0a1abc761ad0a8767a99a9a32bf97300f0a42aa0"
     },
+    "order-fulfillment": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/order-fulfillment/SKILL.md",
+      "computedHash": "0617bc026ec5f6a0484da8247b7213ed07e14f25b08103e851a1f3e1b4f89f93"
+    },
     "supply-chain-optimizer": {
       "source": "travisjneuman/.claude",
       "sourceType": "github",
