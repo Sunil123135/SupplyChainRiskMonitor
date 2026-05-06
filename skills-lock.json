@@ -19,6 +19,12 @@
       "skillPath": "skills/last-mile-delivery/SKILL.md",
       "computedHash": "32f150ce155f927ab312435655d17821238e3a064260338df014bdc7693d43b3"
     },
+    "picker-routing-optimization": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/picker-routing-optimization/SKILL.md",
+      "computedHash": "dfbbd591b4f93b16107a0138617e8db68ddfc7761988f637fd7b1d95760de211"
+    },
     "route-optimization": {
       "source": "kishorkukreja/awesome-supply-chain",
       "sourceType": "github",
