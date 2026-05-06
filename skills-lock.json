@@ -12,6 +12,12 @@
       "sourceType": "github",
       "skillPath": "skills/freight-optimization/SKILL.md",
       "computedHash": "423050a37f606d657b458d34cc12f06a69224b96bf496a9d21fdba7188d450a9"
+    },
+    "route-optimization": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/route-optimization/SKILL.md",
+      "computedHash": "f5e809a9d464e9dce6012d80feb564e98041a5143a8912447b0b47c2d8a41038"
     }
   }
 }
