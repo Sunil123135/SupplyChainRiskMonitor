@@ -7,6 +7,12 @@
       "skillPath": "skills/dsd-route-optimization/SKILL.md",
       "computedHash": "6c65d7afc714586ebe52b2e057efc64c841e8ea7010499e4d9a637257a80d2c9"
     },
+    "ecommerce-fulfillment": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/ecommerce-fulfillment/SKILL.md",
+      "computedHash": "caeee6eaa638e5c00681c96c853d325a7f89d8d53e38fec92e4007716c4a2205"
+    },
     "inventory-optimization": {
       "source": "kishorkukreja/awesome-supply-chain",
       "sourceType": "github",
