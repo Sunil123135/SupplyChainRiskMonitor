@@ -25,6 +25,12 @@
       "skillPath": "stdlib/domains/logistics/SKILL.md",
       "computedHash": "f98ccfba717506f712c84e38c4200a22e16dda94b3117600f49d6ef7b2ed7558"
     },
+    "omnichannel-fulfillment": {
+      "source": "kishorkukreja/awesome-supply-chain",
+      "sourceType": "github",
+      "skillPath": "skills/omnichannel-fulfillment/SKILL.md",
+      "computedHash": "13596c82ef63c568507413d6ed11ac000fb69a97d7c4d4feddf08597409edd60"
+    },
     "procurement-optimization": {
       "source": "kishorkukreja/awesome-supply-chain",
       "sourceType": "github",
