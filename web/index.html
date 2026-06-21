@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Risk Monitor – Digital Twin Creator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font: 15px/1.5 system-ui, -apple-system, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      background: #1a73e8;
+      color: white;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    header span.sub {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-left: auto;
+    }
+    .container {
+      width: 100%;
+      max-width: 720px;
+      padding: 32px 16px;
+    }
+    .panel {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    .panel h2 {
+      margin: 0 0 18px;
+      font-size: 16px;
+      color: #202124;
+    }
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+    #q {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid #dadce0;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color .2s;
+    }
+    #q:focus { outline: none; border-color: #1a73e8; }
+    #go {
+      padding: 10px 22px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    #go:hover { background: #1558c0; }
+    #go:disabled { background: #b0c4e8; cursor: not-allowed; }
+    .hint { font-size: 12px; color: #888; margin-top: 8px; }
+    #status {
+      font-size: 13px;
+      color: #5f6368;
+      margin-top: 14px;
+      min-height: 20px;
+    }
+    .card {
+      border: 1px solid #e8eaed;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 16px;
+      background: #fafafa;
+    }
+    .priority-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 14px;
+    }
+    .priority-badge.critical { background:#fce8e6; color:#c5221f; }
+    .priority-badge.high     { background:#fef7e0; color:#b06000; }
+    .priority-badge.normal   { background:#e6f4ea; color:#137333; }
+    .meta-row { font-size: 13px; color: #5f6368; margin-bottom: 10px; }
+    .meta-row strong { color: #202124; }
+    .section-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: #202124;
+      margin: 18px 0 8px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border: 1px solid #dadce0;
+      border-radius: 16px;
+      font-size: 12px;
+      margin: 3px 4px 3px 0;
+      background: white;
+    }
+    .tag-count { color: #5f6368; font-weight: 600; }
+    .evidence-item {
+      padding: 10px 12px;
+      background: white;
+      border: 1px solid #e8eaed;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .evidence-item a { color: #1a73e8; font-weight: 500; text-decoration: none; }
+    .evidence-item a:hover { text-decoration: underline; }
+    .snippet { color: #5f6368; margin-top: 4px; line-height: 1.5; }
+    .supplier-chip {
+      display: inline-block;
+      padding: 3px 10px;
+      background: #e8f0fe;
+      color: #1a5296;
+      border-radius: 12px;
+      font-size: 12px;
+      margin: 2px 4px 2px 0;
+      cursor: pointer;
+    }
+    .supplier-chip:hover { background: #d2e3fc; }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      padding: 24px 16px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <span style="font-size:22px;">🔍</span>
+  <h1>Supply Chain Risk Monitor</h1>
+  <span class="sub">Digital Twin Creator</span>
+</header>
+
+<div class="container">
+  <div class="panel">
+    <h2>Analyze Supply Chain Risk</h2>
+
+    <div class="input-row">
+      <input id="q" type="text"
+        placeholder="Enter supplier name, keyword or risk topic…"
+        autocomplete="off">
+      <button id="go">Analyze</button>
+    </div>
+    <div class="hint">
+      Try: <span class="supplier-chip" onclick="setQ(this)">cold chain deviation</span>
+           <span class="supplier-chip" onclick="setQ(this)">Acme Logistics</span>
+           <span class="supplier-chip" onclick="setQ(this)">temperature non-compliance</span>
+           <span class="supplier-chip" onclick="setQ(this)">DHL geopolitical risk</span>
+    </div>
+
+    <div id="status"></div>
+    <div id="result"></div>
+  </div>
+</div>
+
+<footer>Supply Chain Risk Monitor &mdash; Local RAG · All analysis runs in-browser · No data leaves your device</footer>
+
+<script type="module">
+// ─── PERCEPTION layer ──────────────────────────────────────────────
+const RISK_KEYWORDS = [
+  "temperature","cold chain","deviation","non-compliance","delay",
+  "breakdown","lead time","stockout","damage","spoilage","QA audit",
+  "QA finding","GxP","GDP","SLA breach","ambient","refrigerated",
+  "scrap","complaints","deviations","warning","recall","quality issue",
+  "contamination","expiry","expired","shipment delay","customs delay",
+  "geopolitical","shortage","labor","inflation","energy","disruption"
+];
+
+function perceiveFromText(text) {
+  const supplierMatches = Array.from(
+    text.matchAll(/\b([A-Z][A-Za-z0-9&\-]+(?:\s+[A-Z][A-Za-z0-9&\-]+){0,2})\b/g)
+  );
+  const supplierSet = new Set(
+    supplierMatches.map(m => m[1]).filter(s => s.length >= 3 && s.split(' ').length <= 3)
+  );
+  const locationMatches = Array.from(
+    text.matchAll(/\b(India|Mumbai|Bangalore|Cochin|Hyderabad|Delhi|Chennai|Pune|US|USA|Europe|Canada|China|Asia|Singapore|Thailand|Vietnam|Global)\b/gi)
+  );
+  const locations = Array.from(new Set(locationMatches.map(m => m[1])));
+  const risksFound = RISK_KEYWORDS.filter(kw => text.toLowerCase().includes(kw.toLowerCase()));
+  return {
+    supplier_candidates: Array.from(supplierSet).slice(0, 5),
+    locations: locations.slice(0, 5),
+    risk_keywords_found: risksFound
+  };
+}
+
+// ─── MEMORY layer ─────────────────────────────────────────────────
+let META = null;
+
+async function loadMeta() {
+  if (META) return;
+  const r = await fetch('./bundle/meta.json');
+  if (!r.ok) throw new Error('Failed to load bundle/meta.json: ' + r.status);
+  META = await r.json();
+  console.log(`✓ MEMORY: ${META.length} records loaded`);
+}
+
+// ─── ACTION layer ─────────────────────────────────────────────────
+function lexicalScore(query, text) {
+  if (!text) return 0;
+  const tokens = new Set(query.toLowerCase().split(/\W+/).filter(Boolean));
+  const lower = text.toLowerCase();
+  let hits = 0;
+  tokens.forEach(t => { if (lower.includes(t)) hits++; });
+  return hits;
+}
+
+function scoreRecord(query, record) {
+  const fields = [
+    record.chunk_text || '',
+    record.title || '',
+    record.supplier || '',
+    record.location || '',
+    (record.risk_tags || []).join(' ')
+  ].join(' ');
+  return lexicalScore(query, fields);
+}
+
+async function retrieve(query, k = 8) {
+  await loadMeta();
+  const scored = META.map(rec => ({ score: scoreRecord(query, rec), rec }));
+  scored.sort((a, b) => b.score - a.score);
+  // Return top-k that have at least some relevance; fall back to all if nothing matches
+  const relevant = scored.filter(x => x.score > 0);
+  const pool = (relevant.length >= k ? relevant : scored).slice(0, k);
+  return pool.map(x => x.rec);
+}
+
+function synthesize(supplier, location, hits) {
+  const tagCounts = {};
+  const evidence = [];
+  hits.forEach(hit => {
+    (hit.risk_tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; });
+    const text = hit.chunk_text || '';
+    evidence.push({
+      url: hit.url,
+      title: hit.title,
+      snippet: text.slice(0, 260) + (text.length > 260 ? '…' : '')
+    });
+  });
+  const top_risks = Object.entries(tagCounts)
+    .sort((a, b) => b[1] - a[1]).slice(0, 6)
+    .map(([tag, count]) => ({ tag, count }));
+  return { supplier, location, top_risks, evidence: evidence.slice(0, 6) };
+}
+
+// ─── DECISION layer ────────────────────────────────────────────────
+const CRITICAL_SUPPLIERS = new Set(["Acme Logistics","ZenCold Chain","BlueRoute Pharma 3PL"]);
+
+function decide(supplier, summary) {
+  let priority = 'normal';
+  if (CRITICAL_SUPPLIERS.has(supplier)) priority = 'critical';
+  const hasTemp = (summary.top_risks || []).some(r =>
+    /temperature|cold chain|ambient/i.test(r.tag));
+  const hasCompliance = (summary.top_risks || []).some(r =>
+    /non-compliance|gdp|gxp|audit/i.test(r.tag));
+  if (hasTemp || hasCompliance) priority = 'critical';
+  const total = (summary.top_risks || []).reduce((s, r) => s + r.count, 0);
+  if (total >= 5 && priority === 'normal') priority = 'high';
+  return priority;
+}
+
+// ─── AGENT orchestration ───────────────────────────────────────────
+async function analyze(userQuery) {
+  const context = perceiveFromText(userQuery);
+  const supplier = context.supplier_candidates[0] || '';
+  const location = context.locations[0] || '';
+  const seed = context.risk_keywords_found.join(' ');
+  const query = [userQuery, seed].filter(Boolean).join(' ').trim()
+             || 'cold chain deviation';
+
+  const hits = await retrieve(query, 8);
+  const summary = synthesize(
+    supplier || (hits[0] && hits[0].supplier) || 'Unknown Supplier',
+    location || (hits[0] && hits[0].location) || 'Unknown',
+    hits
+  );
+  const priority = decide(supplier, summary);
+  return { query_used: query, priority, ...summary };
+}
+
+// ─── UI ────────────────────────────────────────────────────────────
+const goBtn   = document.getElementById('go');
+const statusEl = document.getElementById('status');
+const resultEl = document.getElementById('result');
+
+async function run() {
+  const query = document.getElementById('q').value.trim();
+  if (!query) { statusEl.textContent = 'Please enter a supplier name or risk keyword.'; return; }
+  goBtn.disabled = true;
+  statusEl.textContent = '🔄 Analyzing risks…';
+  resultEl.innerHTML = '';
+  try {
+    const card = await analyze(query);
+    statusEl.textContent = '';
+    renderCard(card);
+  } catch (err) {
+    statusEl.textContent = '';
+    resultEl.innerHTML = `<div class="card" style="color:#c5221f;">
+      <strong>⚠️ Error:</strong> ${err.message}</div>`;
+    console.error(err);
+  } finally {
+    goBtn.disabled = false;
+  }
+}
+
+function renderCard(R) {
+  const pClass = R.priority === 'critical' ? 'critical' : R.priority === 'high' ? 'high' : 'normal';
+  const pIcon  = R.priority === 'critical' ? '⚠️' : R.priority === 'high' ? '🔶' : '✅';
+
+  const tagsHtml = (R.top_risks || [])
+    .map(t => `<span class="tag">${t.tag} <span class="tag-count">(${t.count})</span></span>`)
+    .join('') || '<span style="color:#888">No specific risk tags found</span>';
+
+  const evidenceHtml = (R.evidence || []).map(e => `
+    <div class="evidence-item">
+      <a href="${e.url}" target="_blank" rel="noopener">${e.title || e.url}</a>
+      <div class="snippet">${e.snippet}</div>
+    </div>`).join('') || '<div style="color:#888">No evidence found</div>';
+
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.innerHTML = `
+    <span class="priority-badge ${pClass}">${pIcon} ${R.priority} priority</span>
+    <div class="meta-row">
+      <strong>Supplier:</strong> ${R.supplier || 'Unknown'} &nbsp;&nbsp;
+      <strong>Location:</strong> ${R.location || 'Unknown'}
+    </div>
+    <div class="meta-row" style="font-size:12px;">
+      <strong>Query used:</strong> ${R.query_used}
+    </div>
+    <div class="section-title">🏷️ Top Risk Factors</div>
+    <div>${tagsHtml}</div>
+    <div class="section-title">📄 Evidence</div>
+    ${evidenceHtml}
+  `;
+  resultEl.appendChild(div);
+}
+
+goBtn.addEventListener('click', run);
+document.getElementById('q').addEventListener('keypress', e => {
+  if (e.key === 'Enter') run();
+});
+
+window.setQ = (el) => {
+  document.getElementById('q').value = el.textContent.trim();
+  run();
+};
+</script>
+</body>
+</html>
